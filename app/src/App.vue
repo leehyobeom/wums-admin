@@ -1,19 +1,21 @@
 <template>
-  <router-view />
+  <v-app>
+    <v-main>
+      <router-view/>
+    </v-main>
+  </v-app>
 </template>
+
 <script lang="ts">
-import { Vue } from 'vue-class-component';
+import { defineComponent } from 'vue'
 
-export default class App extends Vue {}
+export default defineComponent({
+  name: 'App',
+
+  data () {
+    return {
+      //
+    }
+  },
+})
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
