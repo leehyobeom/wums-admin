@@ -6,10 +6,10 @@
 import { defineComponent } from 'vue';
 
 // Components
-import HelloWorld from '../components/HelloWorld.vue';
+import HelloWorld from '../components/Dashboard.vue';
 
 export default defineComponent({
-  name: 'HomeView',
+  name: 'DashboardView',
 
   components: {
     HelloWorld,
