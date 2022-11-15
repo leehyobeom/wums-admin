@@ -10,7 +10,6 @@ import HelloWorld from '../components/Dashboard.vue';
 
 export default defineComponent({
   name: 'DashboardView',
-
   components: {
     HelloWorld,
   },
