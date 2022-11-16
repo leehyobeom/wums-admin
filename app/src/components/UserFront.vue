@@ -1,16 +1,13 @@
 <template>
-  <v-container>
-    {{$route.params.id}}
-  </v-container>
+    <img :src= "require(`@/assets/${$route.params.brand}.png`)"/>
 </template>
 
 <script lang='ts'>
 import { defineComponent } from 'vue'
 export default defineComponent({
-  name: 'UserMonitor',
+  name: 'UserBrand',
   data () {
     return {
-      coordinate: [{x:1, y:2}]
     }
   },
   created (){

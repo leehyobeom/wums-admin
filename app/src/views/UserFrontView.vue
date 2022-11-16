@@ -1,17 +1,17 @@
 <template>
-    <v-cotainer>
-        <img :src= image>
-    </v-cotainer>
+    <UserFront/>
 </template>
   <script lang="ts">
   import { defineComponent } from 'vue';
-  
+  import UserFront from '../components/UserFront.vue';
   export default defineComponent({
-    name: 'UserMonitorView',
+    name: 'UserFrontView',
+    components: {
+      UserFront,
+    },
     data () {
       return {
-        image: require("@/assets/logo.png"),
       }
     }
-  });
+});
   </script>

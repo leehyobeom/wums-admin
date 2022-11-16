@@ -1,7 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Dashboar from "@/views/DashboardView.vue";
 import UserMonitor from "@/views/UserMonitorView.vue";
-import testView from "@/views/testView.vue";
+import UserFront from "@/views/UserFrontView.vue";
 
 const routes = [
   {
@@ -15,9 +15,9 @@ const routes = [
     component: UserMonitor,
   },
   {
-    path: "/test",
-    name: "Test",
-    component: testView,
+    path: "/:brand",
+    name: "UserFront",
+    component: UserFront,
   },
 ];
 
