@@ -19,7 +19,7 @@
     "@jridgewell/gen-mapping" "^0.1.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@apollo/client@^3.4.13", "@apollo/client@^3.7.1":
+"@apollo/client@^3.2.1", "@apollo/client@^3.4.13", "@apollo/client@^3.7.1":
   "integrity" "sha512-xu5M/l7p9gT9Fx7nF3AQivp0XukjB7TM7tOd5wifIpI8RskYveL4I+rpTijzWrnqCPZabkbzJKH7WEAKdctt9w=="
   "resolved" "https://registry.npmjs.org/@apollo/client/-/client-3.7.1.tgz"
   "version" "3.7.1"
@@ -1429,6 +1429,13 @@
     "throttle-debounce" "^3.0.1"
     "ts-essentials" "^9.1.2"
     "vue-demi" "^0.13.1"
+
+"@vue/apollo-option@^4.0.0-alpha.20":
+  "integrity" "sha512-iCiv4rVc4yBWRVmQ5OoI7rfX5BfOEYLKM8jtNEia2Z7kuVIo5FKn/Wj3c5BUsu2Gly/j8UwYI42jIeZMXriOLw=="
+  "resolved" "https://registry.npmjs.org/@vue/apollo-option/-/apollo-option-4.0.0-alpha.20.tgz"
+  "version" "4.0.0-alpha.20"
+  dependencies:
+    "throttle-debounce" "^3.0.1"
 
 "@vue/babel-helper-vue-jsx-merge-props@^1.4.0":
   "integrity" "sha512-JkqXfCkUDp4PIlFdDQ0TdXoIejMtTHP67/pvxlgeY+u5k3LEdKuWZ3LK6xkxo52uDoABIVyRwqVkfLQJhk7VBA=="
@@ -7718,7 +7725,7 @@
   "resolved" "https://registry.npmmirror.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz"
   "version" "1.9.1"
 
-"vue@*", "vue@^2 || ^3.2.13", "vue@^2.6.0 || ^3.1.0", "vue@^3.0.0", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.2.0", "vue@^3.2.13", "vue@3.2.45":
+"vue@*", "vue@^2 || ^3.2.13", "vue@^2.6.0 || ^3.1.0", "vue@^3.0.0", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.1.0", "vue@^3.2.0", "vue@^3.2.13", "vue@3.2.45":
   "integrity" "sha512-9Nx/Mg2b2xWlXykmCwiTUCWHbWIj53bnkizBxKai1g61f2Xit700A1ljowpTIM11e3uipOeiPcSqnmBg6gyiaA=="
   "resolved" "https://registry.npmmirror.com/vue/-/vue-3.2.45.tgz"
   "version" "3.2.45"
