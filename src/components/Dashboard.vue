@@ -1,66 +1,74 @@
 <template>
   <v-container>
         <v-card
-          v-for="t in [1, 2, 3]"
-          :key = t
+          v-for="item in lists"
+          :key = item._id
           justify="center" 
           class="d-flex mb-6"
           tyle="max-width: 100%;"
-          :href="`monitor/${t}`"
+          :href="`monitor/${item._id}`"
           >
           <v-col
-            v-for="(eco, i) in ecosystem"
-            :key="i"
-            :href="eco.href"
             class="flex-grow-0 flex-shrink-0"
             tyle="min-width: 100px; max-width: 100%;"
             target="_blank"
-            cols="2"
+            cols="4"
           >
-            <div
-            outlined
-            >
-              {{ eco.text }}
-            </div>
+          {{item.brand}}
           </v-col>
           <v-col
-          class="flex-grow-0 flex-shrink-0"
-          tyle="min-width: 100px; max-width: 100%;"
-          cols="6"
+            class="flex-grow-0 flex-shrink-0"
+            tyle="min-width: 100px; max-width: 100%;"
+            target="_blank"
+            cols="4"
           >
-            <div
-            outlined
-            >
-              dd
-            </div>
-          </v-col >
+          {{item.date}}
+          </v-col>
+          <v-col
+            class="flex-grow-0 flex-shrink-0"
+            tyle="min-width: 100px; max-width: 100%;"
+            target="_blank"
+            cols="4"
+          >
+          {{item.ip}}
+          </v-col>
         </v-card>
   </v-container>
 </template>
 
 <script lang='ts'>
 import { defineComponent } from 'vue'
-
+import gql from 'graphql-tag'
 
 export default defineComponent({
+  
   name: 'HelloWorld',
-
+  apollo: {
+    lists: gql`query {
+      lists: gets {
+        _id:_id,
+        ip:ip,
+        date:date,
+        brand: brand
+        coordinate:coordinate {
+          x: x
+          y: y
+        }
+      }
+    }`,
+  },
   data () {
     return {
-      ecosystem: [
-        {
-          text: 'vuetify-loader',
-          href: 'https://github.com/vuetifyjs/vuetify-loader/tree/next',
-        },
-        {
-          text: 'github',
-          href: 'https://github.com/vuetifyjs/vuetify/tree/next',
-        },
-        {
-          text: 'awesome-vuetify',
-          href: 'https://github.com/vuetifyjs/awesome-vuetify',
-        },
-      ],
+      lists: [{
+        _id:'',
+        ip:'',
+        date:'',
+        coordinate:[{
+          x:'',
+          y:''
+        }],
+        brand: ''
+      }],
     }
   },
 })
