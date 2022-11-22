@@ -1,5 +1,7 @@
 <template>
-    <img :src= "require(`@/assets/${$route.params.brand}.png`)"/>
+      <v-card>
+        <v-img :src= "require(`@/assets/${$route.params.brand}.png`)" width="100%"/>
+      </v-card>
 </template>
 
 <script lang='ts'>
