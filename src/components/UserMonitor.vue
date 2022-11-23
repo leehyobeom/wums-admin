@@ -1,21 +1,24 @@
-<template>
-    <v-card>
-      <v-img :src="require(`@/assets/naver.png`)" width="100%" />
-    </v-card>
-    <v-img :src="require(`@/assets/cursor.png`)" width="30px" :style="pointor"/>
-    <v-bottom-navigation>
-      <v-btn value="recent" @click="stop()">
-        <v-icon >mdi-heart</v-icon>
-      </v-btn>
-      
-      <v-btn value="favorites" @click="run()">
-        <v-icon>mdi-play</v-icon>
-      </v-btn>
-      
-      <v-btn value="nearby">
-        <v-icon>mdi-map-marker</v-icon>
-      </v-btn>
+<template >
+  <v-container class="container">
+    <v-col class="justify-center">
+      <v-img
+          :style="background"
+          :src="require(`@/assets/naver.png`)">
+          <v-img :src="require(`@/assets/cursor.png`)" width="30px" :style="pointor"/>
+        </v-img>
+    </v-col>
+  <v-bottom-navigation>
+    <v-btn value="stop" @click="stop()">
+      <v-icon color="red darken-2">mdi-stop</v-icon>
+    </v-btn>
+    <v-btn value="run" @click="run()">
+      <v-icon color="red darken-2">mdi-play</v-icon>
+    </v-btn>
+    <v-btn value="pause" @click="pause()">
+      <v-icon color="red darken-2">mdi-pause</v-icon>
+    </v-btn>
   </v-bottom-navigation>
+  </v-container>
 </template>
 <script lang='ts'>
 import { defineComponent } from 'vue'
@@ -48,35 +51,64 @@ export default defineComponent({
         ip:'',
         date:'',
         coordinate:[{
-          x:'',
-          y:''
+          x:0,
+          y:0
         }],
         brand: ''
       },
-      pointor: {
+      background: { 
         position: "fixed",
-        top: "203px",
-        left: "48px",
-       " z-index": "15",
+        width:  window.innerWidth * 0.8  + 'px',
+        height:  window.innerHeight * 0.8 + 'px', 
+        "object-fit": "contain"
       },
-      intervalId: 0
+      pointor: {
+        position: "absolute",
+        top:  window.innerHeight * 0.8 * 0.5 + "px",
+        left:  window.innerWidth * 0.8 * 0.5 + "px",
+        "z-index": "15",
+      },
+      intervalId: 0,
+      top: 50,
+      left: 50,
+      windowHeight: window.innerHeight,
+      windowWidth: window.innerWidth,
+      timeIdx:0
     }
   },
   methods: {
     run(){
-      let position = 300;
+      if(this.intervalId){
+        return
+      }
       this.intervalId = setInterval(()=>{
-        position += 10;
-        this.pointor.top =position + "px";
-      }, 100);
+        if(this.item.coordinate.length <= this.timeIdx){
+          this.stop();
+          return
+        }
+        this.top = this.item.coordinate[this.timeIdx].x;
+        this.left = this.item.coordinate[this.timeIdx].y;
+        this.timeIdx += 1;
+        this.setPosition();
+      }, 1000);
     },
     stop(){
+      this.pause();
+      this.top = 50;
+      this.left = 50;
+      this.timeIdx = 0;
+      this.setPosition();
+    },
+    pause(){
       clearInterval(this.intervalId);
+      this.intervalId =0;
+    },
+    setPosition(){
+      this.pointor.top = this.windowHeight * 0.8 * (this.top/100) + "px";
+      this.pointor.left = this.windowWidth * 0.8 * (this.left/100) + "px";
     }
-  }
-  
+  },
 })
 </script>
-
-<style scoped>
+<style>
 </style>
