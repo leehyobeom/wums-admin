@@ -86,8 +86,8 @@ export default defineComponent({
           this.stop();
           return
         }
-        this.top = this.item.coordinate[this.timeIdx].x;
-        this.left = this.item.coordinate[this.timeIdx].y;
+        this.top = this.item.coordinate[this.timeIdx].y;
+        this.left = this.item.coordinate[this.timeIdx].x;
         this.timeIdx += 1;
         this.setPosition();
       }, 10);

@@ -40,8 +40,8 @@ export default defineComponent({
             }`,
             variables: {
                 cursorMonitor: {
-                  brand: this.$route.params.brand,
-                  ip: "10.0.0.9991888111333",
+                  brand: "naver",
+                  ip: "10.0.0.9991888111333999",
                   date: "2022-01-03 10:10:10",
                   coordinate: this.coordinate
             },
