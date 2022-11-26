@@ -1,6 +1,6 @@
 <template>
       <v-card>
-        <v-img :src= "require(`@/assets/${$route.params.brand}.png`)" width="100%" @click="someMethod"/>
+        <v-img :src= "require(`@/assets/${$route.params.brand}.png`)" width="100%"/>
       </v-card>
 </template>
 
@@ -12,64 +12,42 @@ export default defineComponent({
   name: 'UserBrand',
   data () {
     return {
+      coordinate: [{x:50, y:50}],
+      currnetCoordinate: {
+        x:50,
+        y:50
+      },
+      intervalId: 0
     }
   },
   created (){
-    window.addEventListener('beforeunload', this.someMethod2)
-  },
-  mounted(){
+    window.addEventListener('beforeunload', this.setMouseCoordinate);
+    document.addEventListener("mousemove", (event) => {
+      this.currnetCoordinate = {
+          x: Math.floor(event.clientX / window.innerWidth * 100),
+          y: Math.floor(event.clientY / window.innerHeight * 100)
+      }
+    });
+    this.intervalId = setInterval(()=>{
+      this.coordinate.push(this.currnetCoordinate);
+    },10);
   },
   methods: {
-        someMethod(event: any) {
-          this.$apollo.mutate({
-          mutation: gql`mutation ($cursorMonitor: [CursorMonitor!]!) {
-            create(cursorMonitor: $cursorMonitor)
-          }`,
-          variables: {
-              cursorMonitor: {
-                brand: "naver",
-                ip: "10.0.0.9991888",
-                date: "2022-01-02 10:10:10",
-                coordinate: [{x:1, y:3}]
-          },
-        }
-        })
-        console.log(event.clientX);
-            // // clientX/Y gives the coordinates relative to the viewport in CSS pixels.
-            // console.log(event.clientY);
-
-            // // pageX/Y gives the coordinates relative to the <html> element in CSS pixels.
-            // console.log(event.pageX);
-            // console.log(event.pageY);
-
-            // // screenX/Y gives the coordinates relative to the screen in device pixels.
-            // console.log(event.screenX);
-            // console.log(event.screenY);
-        },
-        async someMethod2() {
+        async setMouseCoordinate() {
           await this.$apollo.mutate({
-          mutation: gql`mutation ($cursorMonitor: [CursorMonitor!]!) {
-            create(cursorMonitor: $cursorMonitor)
-          }`,
-          variables: {
-              cursorMonitor: {
-                brand: "naver",
-                ip: "10.0.0.9991888111",
-                date: "2022-01-02 10:10:10",
-                coordinate: [{x:1, y:3}]
-          },
-        }
-        })
-            // // clientX/Y gives the coordinates relative to the viewport in CSS pixels.
-            // console.log(event.clientY);
-
-            // // pageX/Y gives the coordinates relative to the <html> element in CSS pixels.
-            // console.log(event.pageX);
-            // console.log(event.pageY);
-
-            // // screenX/Y gives the coordinates relative to the screen in device pixels.
-            // console.log(event.screenX);
-            // console.log(event.screenY);
+            mutation: gql`mutation ($cursorMonitor: [CursorMonitor!]!) {
+              create(cursorMonitor: $cursorMonitor)
+            }`,
+            variables: {
+                cursorMonitor: {
+                  brand: this.$route.params.brand,
+                  ip: "10.0.0.9991888111333",
+                  date: "2022-01-03 10:10:10",
+                  coordinate: this.coordinate
+            },
+          }
+          })
+          clearInterval(this.intervalId);
         }
     }
 })

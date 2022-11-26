@@ -90,7 +90,7 @@ export default defineComponent({
         this.left = this.item.coordinate[this.timeIdx].y;
         this.timeIdx += 1;
         this.setPosition();
-      }, 1000);
+      }, 10);
     },
     stop(){
       this.pause();
