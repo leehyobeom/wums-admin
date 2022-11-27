@@ -28,7 +28,7 @@ export default defineComponent({
   name: 'UserMonitor',
   apollo: {
     item: {
-      query: gql`query ($_id: String!) {
+      query: gql`query getOne($_id: String!) {
         item: getOne(_id: $_id) {
           brand
           coordinate{
