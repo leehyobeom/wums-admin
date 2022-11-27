@@ -44,7 +44,7 @@ export default defineComponent({
   
   name: 'HelloWorld',
   apollo: {
-    lists: gql`query {
+    lists: gql`query gets{
       lists: gets {
         _id:_id,
         ip:ip,

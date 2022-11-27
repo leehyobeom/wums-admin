@@ -1,4 +1,7 @@
 <template>
+      <v-card>
+        <v-img :src= "require(`@/assets/${$route.params.brand}.png`)" width="100%"/>
+      </v-card>
     <UserFront/>
 </template>
   <script lang="ts">

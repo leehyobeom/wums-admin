@@ -1,9 +1,3 @@
-<template>
-      <v-card>
-        <v-img :src= "require(`@/assets/${$route.params.brand}.png`)" width="100%"/>
-      </v-card>
-</template>
-
 <script lang='ts'>
 import { defineComponent } from 'vue'
 import gql from 'graphql-tag'
@@ -35,14 +29,14 @@ export default defineComponent({
   methods: {
         async setMouseCoordinate() {
           await this.$apollo.mutate({
-            mutation: gql`mutation ($cursorMonitor: [CursorMonitor!]!) {
+            mutation: gql`mutation create($cursorMonitor: [CursorMonitor!]!) {
               create(cursorMonitor: $cursorMonitor)
             }`,
             variables: {
                 cursorMonitor: {
                   brand: "naver",
-                  ip: "10.0.0.9991888111333999",
-                  date: "2022-01-03 10:10:10",
+                  ip: "10.0.0.000",
+                  date: "2022-01-04 10:10:10",
                   coordinate: this.coordinate
             },
           }
