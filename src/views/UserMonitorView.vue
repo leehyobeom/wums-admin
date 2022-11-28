@@ -6,6 +6,7 @@
 import { defineComponent } from 'vue';
 import UserMonitor from '../components/UserMonitor.vue';
 
+
 export default defineComponent({
   name: 'UserMonitorView',
   components: {
@@ -14,6 +15,6 @@ export default defineComponent({
   data () {
     return {
     }
-  }
+  },
 });
 </script>

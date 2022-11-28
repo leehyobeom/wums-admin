@@ -5538,6 +5538,11 @@
   "resolved" "https://registry.npmmirror.com/module-alias/-/module-alias-2.2.2.tgz"
   "version" "2.2.2"
 
+"moment@^2.29.4":
+  "integrity" "sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w=="
+  "resolved" "https://registry.npmjs.org/moment/-/moment-2.29.4.tgz"
+  "version" "2.29.4"
+
 "mrmime@^1.0.0":
   "integrity" "sha512-hzzEagAgDyoU1Q6yg5uI+AorQgdvMCur3FcKf7NhMKWsaYg+RnbTyHRa/9IlLF9rf455MOCtcqqrQQ83pPP7Uw=="
   "resolved" "https://registry.npmmirror.com/mrmime/-/mrmime-1.0.1.tgz"
@@ -8355,15 +8360,16 @@
   "resolved" "https://registry.npmmirror.com/ws/-/ws-8.11.0.tgz"
   "version" "8.11.0"
 
-"wums@^0.0.22":
-  "integrity" "sha512-FIhGClu3IqWirm53orEBpSAAr082SmdFJixuq1otzSdI31iCLXU2KRQr/mknlA/4ioL2vrQZtYLIrMzl0Kse9A=="
-  "resolved" "https://registry.npmjs.org/wums/-/wums-0.0.22.tgz"
-  "version" "0.0.22"
+"wums@^0.0.25":
+  "integrity" "sha512-S5LncDgEe/bzQAGRaQXwQFRye/1k1cJuFcJnzabzEwehpdUOsTw8jigasUZE8hExMfqiVgC/SGvKWi+GIYUZHg=="
+  "resolved" "https://registry.npmjs.org/wums/-/wums-0.0.25.tgz"
+  "version" "0.0.25"
   dependencies:
     "@apollo/client" "^3.7.1"
     "@vue/apollo-option" "^4.0.0-alpha.20"
     "graphql" "^15.8.0"
     "graphql-tag" "^2.12.6"
+    "moment" "^2.29.4"
     "vite-plugin-dts" "^1.7.1"
     "vue" "^3.2.41"
 
