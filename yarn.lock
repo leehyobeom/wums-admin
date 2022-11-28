@@ -8355,10 +8355,10 @@
   "resolved" "https://registry.npmmirror.com/ws/-/ws-8.11.0.tgz"
   "version" "8.11.0"
 
-"wums@^0.0.15":
-  "integrity" "sha512-st7PuWW/5RjAz0nAQ9Wg1coCoRsLeTBib/arrFDMe/3r+DqV8VQnHrqOjgH5h5TjEjMOEfjw27U9RLoFGpFGhg=="
-  "resolved" "https://registry.npmjs.org/wums/-/wums-0.0.15.tgz"
-  "version" "0.0.15"
+"wums@^0.0.22":
+  "integrity" "sha512-FIhGClu3IqWirm53orEBpSAAr082SmdFJixuq1otzSdI31iCLXU2KRQr/mknlA/4ioL2vrQZtYLIrMzl0Kse9A=="
+  "resolved" "https://registry.npmjs.org/wums/-/wums-0.0.22.tgz"
+  "version" "0.0.22"
   dependencies:
     "@apollo/client" "^3.7.1"
     "@vue/apollo-option" "^4.0.0-alpha.20"

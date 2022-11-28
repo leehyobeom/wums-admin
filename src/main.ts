@@ -5,9 +5,7 @@ import vuetify from './plugins/vuetify'
 import { loadFonts } from './plugins/webfontloader'
 import { ApolloClient, InMemoryCache } from '@apollo/client/core'
 import { createApolloProvider } from '@vue/apollo-option'
-
 const cache = new InMemoryCache()
-
 const apolloClient = new ApolloClient({
   cache,
   uri: 'http://localhost:3000/graphql',
