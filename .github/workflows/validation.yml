@@ -15,4 +15,7 @@ jobs:
         with:
           node-version: 16.x
       - run: npm ci
-      - run: npm run lint
+      - name: lint test
+        run: npm run lint
+      - name: unit test
+        run: npm run test:unit
