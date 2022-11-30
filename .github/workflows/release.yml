@@ -2,9 +2,9 @@ name: release
 
 on:
   workflow_dispatch:
-  inputs:
-    comment:
-      description: 'comment'     
+    inputs:
+      comment:
+        description: 'comment'     
 jobs:
   build:
     runs-on: ubuntu-latest
