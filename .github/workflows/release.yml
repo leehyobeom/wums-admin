@@ -15,6 +15,7 @@ jobs:
         with:
           node-version: 16.x
       - name: Semantic Release
-        uses: emantic-release/action@v3
-        with:
+        uses: cycjimmy/semantic-release-action@v3
+        branches: ["main"]
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
