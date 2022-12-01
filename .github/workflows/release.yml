@@ -18,13 +18,12 @@ jobs:
         with:
           node-version: 16.x
       - name: Semantic Release
-        uses: cycjimmy/semantic-release-action@v3
         id: semantic
+        uses: cycjimmy/semantic-release-action@v3
         with:
           branches: main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: echo ${{ steps.semantic.outputs.new_release_version }}
       - name: AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -40,6 +39,7 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           IMAGE_TAG: ${{ steps.semantic.outputs.new_release_version }}
         run: |
+          echo ${{ steps.semantic.outputs.new_release_version }}
           docker build -t $ECR_REGISTRY:$IMAGE_TAG .
           docker push $ECR_REGISTRY:$IMAGE_TAG
           echo "::set-output name=image::$ECR_REGISTRY:$IMAGE_TAG"
