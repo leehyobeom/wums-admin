@@ -6,7 +6,7 @@
 </template>
   <script lang="ts">
   import { defineComponent } from 'vue';
-  import wums from 'wums';
+  import wums from '@leehyobeom/wums';
   export default defineComponent({
     name: 'UserFrontView',
     components: {

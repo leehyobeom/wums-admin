@@ -11,6 +11,7 @@
   "dependencies": {
     "@apollo/client": "^3.7.1",
     "@cycjimmy/semantic-release-action": "^3.1.1",
+    "@leehyobeom/wums": "^0.0.25",
     "@mdi/font": "5.9.55",
     "@vue/apollo-composable": "^4.0.0-beta.1",
     "@vue/apollo-option": "^4.0.0-alpha.20",
@@ -23,8 +24,7 @@
     "vue-class-component": "^8.0.0-0",
     "vue-router": "4",
     "vuetify": "^3.0.0-beta.0",
-    "webfontloader": "^1.0.0",
-    "wums": "^0.0.25"
+    "webfontloader": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
@@ -84,6 +84,9 @@
     "not ie 11"
   ],
   "release": {
-    "branches": ["main", "next"]
+    "branches": [
+      "main",
+      "next"
+    ]
   }
 }
