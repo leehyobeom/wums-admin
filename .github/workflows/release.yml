@@ -40,7 +40,7 @@ jobs:
           IMAGE_NAME: wums-front
           IMAGE_TAG: ${{ steps.semantic.outputs.new_release_version }}
         run: |
-          docker build -t $IMAGE_NAME:$IMAGE_TAG .
+          docker build -t $ECR_REGISTRY/$IMAGE_NAME:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$IMAGE_NAME:$IMAGE_TAG
           echo "::set-output name=image::$ECR_REGISTRY:$IMAGE_TAG"
 
