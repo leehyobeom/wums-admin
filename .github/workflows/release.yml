@@ -7,7 +7,7 @@ on:
         description: comment
 env:
   AWS_REGION: ap-northeast-2
-  ECR_REGISTRY: 251974498126.dkr.ecr.ap-northeast-2.amazonaws.com/wums-front
+  ECR_REGISTRY: 251974498126.dkr.ecr.ap-northeast-2.amazonaws.com
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -37,10 +37,10 @@ jobs:
         id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_NAME: wums
           IMAGE_TAG: ${{ steps.semantic.outputs.new_release_version }}
         run: |
-          echo ${{ steps.semantic.outputs.new_release_version }}
-          docker build -t $ECR_REGISTRY:$IMAGE_TAG .
-          docker push $ECR_REGISTRY:$IMAGE_TAG
+          docker build -t $IMAGE_NAME:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$IMAGE_NAME:$IMAGE_TAG
           echo "::set-output name=image::$ECR_REGISTRY:$IMAGE_TAG"
 
