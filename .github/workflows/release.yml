@@ -37,7 +37,7 @@ jobs:
         id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          IMAGE_NAME: wums
+          IMAGE_NAME: wums-front
           IMAGE_TAG: ${{ steps.semantic.outputs.new_release_version }}
         run: |
           docker build -t $IMAGE_NAME:$IMAGE_TAG .
