@@ -4,7 +4,10 @@ on:
   workflow_dispatch:
     inputs:
       comment:
-        description: comment  
+        description: comment
+env:
+  AWS_REGION: ap-northeast-2
+  ECR_REGISTRY: 251974498126.dkr.ecr.ap-northeast-2.amazonaws.com/wums-front
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,7 +19,27 @@ jobs:
           node-version: 16.x
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v3
+        id: semantic
         with:
           branches: main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+      - name: AWS ECR Login
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+      - name: Docker Image Build & Push
+        id: build-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ steps.semantic.outputs.new_release_version }}
+        run: |
+          docker build -t $ECR_REGISTRY:$IMAGE_TAG .
+          docker push $ECR_REGISTRY:$IMAGE_TAG
+          echo "::set-output name=image::$ECR_REGISTRY:$IMAGE_TAG"
+
