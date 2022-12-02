@@ -26,7 +26,7 @@ jobs:
       - name: AWS ECR Login
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
-      - run: touch Dockerrun.aws.json &&
+      - run: touch Dockerrun.aws.json
       - run: |
           echo -e '{
             "AWSEBDockerrunVersion": "1",
