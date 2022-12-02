@@ -44,26 +44,12 @@ jobs:
           }' >> ./deploy/Dockerrun.aws.json
       - run: cat ./deploy/Dockerrun.aws.json
       - run: cd deploy && zip -r deploy.zip .
-      - name: Check from S3
-        uses: tuler/s3-check-action@master
-        id: check
-        env:
-          FILE: ${{ github.sha }}
-          AWS_REGION: 'us-east-1'
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_SECRET_ACCESS_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      - name: Remove from S3
-        uses: vitorsgomes/s3-rm-action@master
+      - name: Get Current Time
+        uses: 1466587594/get-current-time@v2
+        id: current-time
         with:
-          args: --recursive
-        env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_BUCKET_NAME }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_SECRET_ACCESS_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ env.AWS_REGION }}
-          PATH_TO_DELETE: wums-front/wums-front-${{ inputs.version }}.zip
-        if: steps.check.outputs.exists == 'true'
+          format: YYYY-MM-DDTHH-mm-ss
+          utcOffset: "+09:00"
       - name: Beanstalk Deploy
         uses: einaregilsson/beanstalk-deploy@v14
         with:
@@ -71,7 +57,7 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: wums-front
           environment_name: wums-front
-          version_label: wums-front-${{inputs.version}}
+          version_label: wums-front-v${{ inputs.version }}-${{ steps.current-time.outputs.formattedTime }}
           region: ap-northeast-2
           deployment_package: deploy/deploy.zip
           wait_for_environment_recovery: 200
