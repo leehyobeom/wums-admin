@@ -31,7 +31,7 @@ jobs:
           echo -e '{
             "AWSEBDockerrunVersion": "1",
             "Image": {
-              "Name": "test",
+              "Name": "${{ inputs.version }}",
               "Update": "true"
             },
             "Ports": [
@@ -40,5 +40,5 @@ jobs:
               }
             ]
           }' >> Dockerrun.aws.json
-      - run: Dockerrun.aws.json
+      - run: cat Dockerrun.aws.json
           
