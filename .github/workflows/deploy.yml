@@ -44,12 +44,6 @@ jobs:
           }' >> ./deploy/Dockerrun.aws.json
       - run: cat ./deploy/Dockerrun.aws.json
       - run: cd deploy && zip -r deploy.zip .
-      - name: Get Current Time
-        uses: 1466587594/get-current-time@v2
-        id: current-time
-        with:
-          format: YYYY-MM-DDTHH-mm-ss
-          utcOffset: "+09:00"
       - name: Beanstalk Deploy
         uses: einaregilsson/beanstalk-deploy@v14
         with:
@@ -57,7 +51,7 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: wums-front
           environment_name: wums-front
-          version_label: wums-front-v${{ inputs.version }}-${{ steps.current-time.outputs.formattedTime }}
+          version_label: wums-front-v${{ inputs.version }}
           region: ap-northeast-2
           deployment_package: deploy/deploy.zip
           wait_for_environment_recovery: 200
