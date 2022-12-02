@@ -31,7 +31,7 @@ jobs:
           echo -e '{
             "AWSEBDockerrunVersion": "1",
             "Image": {
-              "Name": "${{AWS_ECR_ENDPOINT}}:${{ inputs.version }}",
+              "Name": "${{ secrets.AWS_ECR_ENDPOINT }}:${{ inputs.version }}",
               "Update": "true"
             },
             "Ports": [
