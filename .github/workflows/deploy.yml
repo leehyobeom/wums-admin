@@ -1,0 +1,44 @@
+name: deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: version
+env:
+  AWS_REGION: ap-northeast-2
+  ECR_REGISTRY: 251974498126.dkr.ecr.ap-northeast-2.amazonaws.com
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+      - name: AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_SECRET_ACCESS_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+      - name: AWS ECR Login
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+      - run: touch Dockerrun.aws.json &&
+      - run: |
+          echo -e '{
+            "AWSEBDockerrunVersion": "1",
+            "Image": {
+              "Name": "test",
+              "Update": "true"
+            },
+            "Ports": [
+              {
+                "ContainerPort": 8080
+              }
+            ]
+          }' >> Dockerrun.aws.json
+      - run: Dockerrun.aws.json
+          
