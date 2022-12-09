@@ -34,7 +34,7 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
       - run: |
-        touch .npmrc
+          touch .npmrc
       - run: |
           echo -e '@leehyobeom:registry=https://npm.pkg.github.com/
           //npm.pkg.github.com/:_authToken= ${{ secrets.GITHUB_TOKEN }}'
