@@ -5,6 +5,7 @@ RUN npm install -g http-server
 WORKDIR /app
 
 COPY package*.json ./
+COPY .npmrc ./
 
 RUN npm install
 
