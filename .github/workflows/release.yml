@@ -33,6 +33,12 @@ jobs:
       - name: AWS ECR Login
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
+      - run: |
+        touch .npmrc
+      - run: |
+          echo -e '@leehyobeom:registry=https://npm.pkg.github.com/
+          //npm.pkg.github.com/:_authToken= ${{ secrets.GITHUB_TOKEN }}'
+          >> .npmrc
       - name: Docker Image Build & Push
         id: build-image
         env:
