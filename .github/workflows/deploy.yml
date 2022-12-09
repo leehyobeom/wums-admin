@@ -7,7 +7,7 @@ on:
         description: version
 env:
   AWS_REGION: ap-northeast-2
-  ECR_REGISTRY: 251974498126.dkr.ecr.ap-northeast-2.amazonaws.com
+  ECR_REGISTRY:  ${{ secrets.AWS_ECR_ENDPOINT }}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -33,7 +33,7 @@ jobs:
           echo -e '{
             "AWSEBDockerrunVersion": "1",
             "Image": {
-              "Name": "${{ secrets.AWS_ECR_ENDPOINT }}:${{ inputs.version }}",
+              "Name": "${{ secrets.AWS_ECR_ENDPOINT }}/wums-front:${{ inputs.version }}",
               "Update": "true"
             },
             "Ports": [
