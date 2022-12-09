@@ -7,6 +7,7 @@ WORKDIR /app
 COPY package*.json ./
 COPY .npmrc .npmrc
 
+RUN cat .npmrc
 RUN npm install
 RUN rm -f .npmrc
 
