@@ -33,12 +33,12 @@ jobs:
       - name: AWS ECR Login
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
-      - run: |
-          touch .npmrc
-      - run: |
-          echo -e '@leehyobeom:registry=https://npm.pkg.github.com/
-          //npm.pkg.github.com/:_authToken=${{ secrets.WUMS_TOKEN }}'
-          >> .npmrc
+      # - run: |
+      #     touch .npmrc
+      # - run: |
+      #     echo -e '@leehyobeom:registry=https://npm.pkg.github.com/
+      #     //npm.pkg.github.com/:_authToken=${{ secrets.WUMS_TOKEN }}'
+      #     >> .npmrc
       - name: Docker Image Build & Push
         id: build-image
         env:
@@ -46,7 +46,7 @@ jobs:
           IMAGE_NAME: wums-front
           IMAGE_TAG: ${{ steps.semantic.outputs.new_release_version }}
         run: |
-          docker build -t $ECR_REGISTRY/$IMAGE_NAME:$IMAGE_TAG .
+          docker build --build-arg WUMS_TOKEN=${{ secrets.WUMS_TOKEN }} -t $ECR_REGISTRY/$IMAGE_NAME:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$IMAGE_NAME:$IMAGE_TAG
           echo "::set-output name=image::$ECR_REGISTRY:$IMAGE_TAG"
 
