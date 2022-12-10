@@ -8,7 +8,7 @@ import { createApolloProvider } from '@vue/apollo-option'
 const cache = new InMemoryCache()
 const apolloClient = new ApolloClient({
   cache,
-  uri: process.env.VUE_APP_APOLLO_URL,
+  uri: "test",
 })
 const apolloProvider = createApolloProvider({
   defaultClient: apolloClient,
