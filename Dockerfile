@@ -6,9 +6,11 @@ WORKDIR /app
 
 COPY package*.json ./
 COPY .npmrc .npmrc
+COPY .env .env
 
 RUN npm install
 RUN rm -f .npmrc
+RUN rm -f .env
 
 COPY . .
 
