@@ -9,7 +9,6 @@ COPY .npmrc .npmrc
 
 RUN npm install
 RUN rm -f .npmrc
-RUN rm -f .env
 
 COPY . .
 

@@ -36,9 +36,6 @@ jobs:
       - run: |
           touch .npmrc
       - run: echo -e '@leehyobeom:registry=https://npm.pkg.github.com/ \n //npm.pkg.github.com/:_authToken=${{ secrets.WUMS_TOKEN }}' >> .npmrc
-      - run: |
-          touch .env
-      - run: echo -e 'VUE_APP_APOLLO_URL=${{ secrets.WUMS_GQL_ENDPOINT }}' >> .env
       - name: Docker Image Build & Push
         id: build-image
         env:
