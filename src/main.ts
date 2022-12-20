@@ -8,7 +8,7 @@ import { createApolloProvider } from '@vue/apollo-option'
 const cache = new InMemoryCache()
 const apolloClient = new ApolloClient({
   cache,
-  uri: "http://wums-loop.eba-3m2mumt2.ap-northeast-2.elasticbeanstalk.com/graphql",
+  uri: "http://wums-loop:30002/graphql",
 })
 const apolloProvider = createApolloProvider({
   defaultClient: apolloClient,
