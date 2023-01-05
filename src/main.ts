@@ -8,7 +8,7 @@ import { createApolloProvider } from '@vue/apollo-option'
 const cache = new InMemoryCache()
 const apolloClient = new ApolloClient({
   cache,
-  uri: "http://gql.wums.link/",
+  uri: "http://gql.wums.link/graphql",
   // uri: "http://localhost:30006/graphql",
 })
 const apolloProvider = createApolloProvider({
