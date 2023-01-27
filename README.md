@@ -1,24 +1,3 @@
-# app
+# WUMS-ADMIN
 
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+사용자의 마우스 커서의 움직임을 영상으로 보여주는 어플리케이션
